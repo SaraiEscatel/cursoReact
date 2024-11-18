@@ -55,7 +55,7 @@ const loginReducer = (state, action) => {
   }
 };
 
-const LoginUseReducers = () => {
+const LoginUserReducers = () => {
   const [state, dispatch] = useReducer(loginReducer, initialState);
   //Obtain all variables from state
   const { username, password, error, isLoading, isLoggedIn } = state;
@@ -90,39 +90,46 @@ const LoginUseReducers = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={submit}>
-        {error && <p style={{ color: "tomato" }}>{error}</p>}
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) =>
-            dispatch({
-              type: FIELD,
-              fieldName: "username",
-              payload: e.currentTarget.value,
-            })
-          }
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            dispatch({
-              type: FIELD,
-              fieldName: "password",
-              payload: e.currentTarget.value,
-            })
-          }
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+    <div className="App">
+      {isLoggedIn ? (
+        <div>
+          <h1>Welcome, {username}</h1>
+          <button onClick={logout}>Logout</button>
+        </div>
+      ) : (
+        <form onSubmit={submit}>
+          {error && <p style={{ color: "tomato" }}>{error}</p>}
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) =>
+              dispatch({
+                type: FIELD,
+                fieldName: "username",
+                payload: e.currentTarget.value,
+              })
+            }
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              dispatch({
+                type: FIELD,
+                fieldName: "password",
+                payload: e.currentTarget.value,
+              })
+            }
+          />
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+      )}
     </div>
   );
 };
 
-export default LoginUseReducers;
+export default LoginUserReducers;

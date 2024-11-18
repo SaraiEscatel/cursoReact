@@ -1,5 +1,5 @@
 import "./App.css";
-import LoginUseReducers from "./components/LoginUseReducers";
+import LoginUserReducers from "./components/LoginUserReducers";
 
 import LoginUseState from "./components/LoginUseState";
 
@@ -9,7 +9,7 @@ function App() {
       {/**<Counter /> */}
       <h1>UseReducer Examples</h1>
       {/**<LoginUseState /> */}
-      <LoginUseReducers />
+      <LoginUserReducers />
     </div>
   );
 }
