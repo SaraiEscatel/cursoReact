@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import AppReduxSaga from "./AppReduxSaga";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { createNewAppAsyncStore } from "./store/config/storeConfig"; // Asegúrate de que este sea tu store
 import { Provider } from "react-redux"; // Importa el Provider desde react-redux
+import LoginUseState from "./components/LoginUseState";
 
 let appAsyncStore = createNewAppAsyncStore(); // Crea el store utilizando la función que definiste
 
@@ -14,7 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider store={appAsyncStore}>
       {/* Envuelve tu aplicación con el Provider */}
-      <AppReduxSaga />
+      <App />
     </Provider>
   </React.StrictMode>
 );
